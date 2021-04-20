@@ -1,22 +1,24 @@
 require('chromedriver');
 const webdriver = require('selenium-webdriver'),
-By =webdriver.By,
-until= webdriver.until;
+    By = webdriver.By,
+    until = webdriver.until;
 
-const driver = new webdriver.Builder().forBrowser('chrome').build();
+const driver = new webdriver.Builder()
+    .withCapabilities({ 'browserName': 'chrome', "chromeOptions": { binary: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" } })
+    .build();
 
 driver.get('http://library-app.firebaseapp.com');
 
-driver.findElements(By.css('input')).then(function(el){
-    console.log("success "+ el);
+driver.findElements(By.css('input')).then(function(el) {
+    console.log("success " + el);
 });
 
-driver.findElements(By.css('.btn-lg')).then(function(el){
-    console.log("found the button "+ el);
+driver.findElements(By.css('.btn-lg')).then(function(el) {
+    console.log("found the button " + el);
 });
 
-driver.findElements(By.css('nav li')).then(function(array){
-    console.log("found the element you want "+ array);
+driver.findElements(By.css('nav li')).then(function(array) {
+    console.log("found the element you want " + array);
 });
 
 

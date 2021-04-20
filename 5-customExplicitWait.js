@@ -1,9 +1,11 @@
 require('chromedriver');
 const webdriver = require('selenium-webdriver'),
-By =webdriver.By,
-until= webdriver.until;
+    By = webdriver.By,
+    until = webdriver.until;
 
-const driver = new webdriver.Builder().forBrowser('chrome').build();
+const driver = new webdriver.Builder()
+    .withCapabilities({ 'browserName': 'chrome', "chromeOptions": { binary: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" } })
+    .build();
 
 driver.get('http://www.google.com/ncr');
 
@@ -14,6 +16,6 @@ query.sendKeys('webdriver\n');
 
 driver.wait(function() {
     return driver.getTitle().then(function(title) {
-      return title === 'webdriver - Tìm trên Google';
+        return title === 'webdriver - Tìm trên Google';
     });
-  }, 10000);
+}, 10000);
